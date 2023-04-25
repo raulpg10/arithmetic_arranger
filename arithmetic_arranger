@@ -1,0 +1,41 @@
+def calc(list):
+  if len(list) > 5:
+    print("Error: Too many problems")
+  else:
+    for i in list:
+      list2 = i.split()
+      n1 = list2[0]
+      n2 = list2[2]
+      op = list2[1]
+
+      if len(n1) > 4 or len(n2) > 4 :
+        print("\nError: Numbers cannot be more than four digits.")
+        continue
+
+      try:
+        int(n1) and int(n2)
+      except:
+        print("\nError: Numbers must only contain digits.")
+        continue
+
+      if op == "+":
+        operation = int(n1) + int(n2)
+      elif op == "-":
+        operation = int(n1) - int(n2)
+      else:
+        print("\nError: Operator must be '+' or '-'.")
+        continue
+
+      if len(n1) >= len(n2):
+        print(f"\n  {n1}")
+        print(op + " " * (len(n1)-len(n2)) + f" {n2}")
+        print("-" * (len(n1)+2))
+
+      else:
+        print("\n" + " " * (len(n2) - len(n1)) + f"  {n1}")
+        print(op + f" {n2}")
+        print("-" * (len(n2)+2))
+
+      print(f"  {operation}")
+
+calc(["32 + 6a8", "38501 + 2", "45 * 43", "123 + 49"])
